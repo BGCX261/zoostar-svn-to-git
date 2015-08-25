@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<mvc:resources location="/resources/" mapping="/resources/**"/>
+	
+    <!-- Selects a static view for rendering without the need for an explicit controller -->
+    <mvc:view-controller path="/login" view-name="login"/>
+<!--     <mvc:view-controller path="/" view-name="home"/> -->
+
+	<!-- Tiles View Configuration -->
+    <bean id="tileViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver"
+        p:viewClass="org.springframework.web.servlet.view.tiles2.TilesView"
+        p:order="1"
+    />
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/layout/layout.xml</value>
+            </list>
+        </property>
+    </bean>
+
+	<bean id="jspViewResolver"	class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:viewClass="org.springframework.web.servlet.view.JstlView"
+		p:prefix="/"
+		p:suffix=".jsp"
+	/>
+	
+</beans>

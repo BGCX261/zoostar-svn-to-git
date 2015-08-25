@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+		"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+		"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="base.definition" template="/WEB-INF/layout/layout.jsp">
+		<put-attribute name="title" value="Home - Rough Cut"/>
+		<put-attribute name="header" value="/WEB-INF/layout/header.jsp"/>
+		<put-attribute name="body" value="/WEB-INF/layout/body.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"/>
+	</definition>
+	
+	<definition name="login" extends="base.definition">
+		<put-attribute name="title" value="Login - Rough Cut"/>
+		<put-attribute name="header" value=""/>
+		<put-attribute name="body" value="/login.jsp"/>
+	</definition>
+
+	<definition name="home" extends="base.definition">
+		<put-attribute name="title" value="Home - Rough Cut"/>
+	</definition>
+	
+	<definition name="company.retrieve" extends="base.definition">
+		<put-attribute name="title" value="Retrieve - Rough Cut"/>
+		<put-attribute name="body" value="/WEB-INF/pages/company/retrieve.jsp"/>
+	</definition>
+
+	<definition name="company.create" extends="base.definition">
+		<put-attribute name="title" value="Create - Rough Cut"/>
+		<put-attribute name="body" value="/WEB-INF/pages/company/create.jsp"/>
+	</definition>
+
+	<definition name="company.update" extends="base.definition">
+		<put-attribute name="title" value="Update - Rough Cut"/>
+		<put-attribute name="body" value="/WEB-INF/pages/company/update.jsp"/>
+	</definition>
+</tiles-definitions>

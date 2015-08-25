@@ -1,0 +1,3 @@
+Tag any DB changes with MAJOR #. eg. 1.x.x
+Tag any branch/feature change with MINOR #. eg. x.1.x
+Tag any trunk/bug fix with PATCH #. eg. x.x.1

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">QuickDial</string>
+    <string name="number">Calling Card Number</string>
+    <string name="pin">PIN</string>
+    <string name="prepend">Prepend Digits</string>
+    <string name="append">Append Symbol</string>
+
+</resources>

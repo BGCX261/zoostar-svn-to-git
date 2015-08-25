@@ -1,0 +1,16 @@
+merge --depth=infinity -r155:156 https://zoostar.googlecode.com/svn/zant/branches/2.0 C:/Documents and Settings/pratik/My Documents/dev/workspace/zant
+    --- Merging r155 through r156 into C:/Documents and Settings/pratik/My Documents/dev/workspace/zant
+    U   C:/Documents and Settings/pratik/My Documents/dev/workspace/zant/src/net/zoostar/zant/EcpCompile.java
+    A   C:/Documents and Settings/pratik/My Documents/dev/workspace/zant/src/net/zoostar/zant/EclipseClasspathHandler.java
+    A   C:/Documents and Settings/pratik/My Documents/dev/workspace/zant/src/net/zoostar/zant/EclipseClasspath.java
+    U   C:/Documents and Settings/pratik/My Documents/dev/workspace/zant/src/net/zoostar/zant/EcpClean.java
+    D   C:/Documents and Settings/pratik/My Documents/dev/workspace/zant/src/net/zoostar/zant/Util.java
+     U  C:/Documents and Settings/pratik/My Documents/dev/workspace/zant
+    Property set on C:/Documents and Settings/pratik/My Documents/dev/workspace/zant
+    Merge complete.
+    ===== File Statistics: =====
+    Deleted: 1
+    Added: 2
+    Updated: 2
+    ==== Property Statistics: =====
+    Updated: 1

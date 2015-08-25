@@ -1,0 +1,7 @@
+merge --depth=infinity -r81:87 https://zoostar.googlecode.com/svn/SVNBranchAndMerge/trunk C:/Documents and Settings/pratik/My Documents/dev/workspace/SVNBranchAndMerge-2.0
+    --- Merging r81 through r87 into C:/Documents and Settings/pratik/My Documents/dev/workspace/SVNBranchAndMerge-2.0
+    C   C:/Documents and Settings/pratik/My Documents/dev/workspace/SVNBranchAndMerge-2.0/file.txt
+    Property set on C:/Documents and Settings/pratik/My Documents/dev/workspace/SVNBranchAndMerge-2.0
+    Merge complete.
+    ==== Conflict Statistics: =====
+    File conflicts: 1

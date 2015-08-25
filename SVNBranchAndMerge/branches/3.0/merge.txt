@@ -1,0 +1,7 @@
+merge --depth=infinity -r89:91 https://zoostar.googlecode.com/svn/SVNBranchAndMerge/trunk C:/Documents and Settings/pratik/My Documents/dev/workspace/SVNBranchAndMerge-3.0
+    --- Merging r89 through r91 into C:/Documents and Settings/pratik/My Documents/dev/workspace/SVNBranchAndMerge-3.0
+    U   C:/Documents and Settings/pratik/My Documents/dev/workspace/SVNBranchAndMerge-3.0/file.txt
+    Property set on C:/Documents and Settings/pratik/My Documents/dev/workspace/SVNBranchAndMerge-3.0
+    Merge complete.
+    ===== File Statistics: =====
+    Updated: 1

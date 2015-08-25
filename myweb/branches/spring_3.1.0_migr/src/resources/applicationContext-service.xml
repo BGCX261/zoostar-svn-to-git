@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="cacheManager"
+		class="org.springframework.cache.ehcache.EhCacheCacheManager"
+		p:cache-manager-ref="ehcache"/>
+		
+	<bean id="ehcache"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
+		p:config-location="classpath:ehcache.xml"/>
+	
+	<bean id="timesheetStateObserver" class="net.zoostar.timesheet.service.TimesheetStateObserver" />
+	
+	<bean id="timesheetStateCreated" class="net.zoostar.timesheet.domain.spring.SpringTimesheetStateCreated" />
+	<bean id="registerTimesheetCreatedObserver" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetObject" ref="timesheetStateCreated"></property>
+		<property name="targetMethod" value="addObserver"></property>
+		<property name="arguments">
+			<list><ref local="timesheetStateObserver" /></list>
+		</property>
+	</bean>
+	
+	<bean id="timesheetStateSubmitted" class="net.zoostar.timesheet.domain.spring.SpringTimesheetStateSubmitted" />
+	<bean id="registerTimesheetSubmittedObserver" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetObject" ref="timesheetStateSubmitted"></property>
+		<property name="targetMethod" value="addObserver"></property>
+		<property name="arguments">
+			<list><ref local="timesheetStateObserver" /></list>
+		</property>
+	</bean>
+	
+	<bean id="timesheetStateApproved" class="net.zoostar.timesheet.domain.spring.SpringTimesheetStateApproved" />
+	<bean id="registerTimesheetApprovedObserver" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetObject" ref="timesheetStateApproved"></property>
+		<property name="targetMethod" value="addObserver"></property>
+		<property name="arguments">
+			<list><ref local="timesheetStateObserver" /></list>
+		</property>
+	</bean>
+	
+	<bean id="timesheetStateRejected" class="net.zoostar.timesheet.domain.spring.SpringTimesheetStateRejected" />
+	<bean id="registerTimesheetRejectedObserver" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetObject" ref="timesheetStateRejected"></property>
+		<property name="targetMethod" value="addObserver"></property>
+		<property name="arguments">
+			<list><ref local="timesheetStateObserver" /></list>
+		</property>
+	</bean>
+	
+	<bean id="timesheetManager" class="net.zoostar.timesheet.service.TimesheetManagerImpl" />
+</beans>

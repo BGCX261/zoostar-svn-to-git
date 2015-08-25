@@ -1,0 +1,124 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>net.zoostar.common</groupId>
+	<artifactId>common-build</artifactId>
+	<version>1.0.0.RELEASE</version>
+	<packaging>pom</packaging>
+	<name>common-build</name>
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<pluginManagement>
+			<plugins>
+				<plugin> <!-- maven-clean-plugin -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.4.1</version>
+				</plugin>
+				<plugin> <!-- maven-resources-plugin -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.6</version>
+				</plugin>
+				<plugin> <!-- maven-compiler-plugin -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source>${compiler-source}</source>
+						<target>${compiler-target}</target>
+					</configuration>
+				</plugin>
+				<plugin> <!-- maven-jar-plugin -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.3.2</version>
+				</plugin>
+				<plugin> <!-- maven-war-plugin -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.2</version>
+					<executions>
+						<execution>
+							<id>default-war</id>
+							<phase>none</phase>
+						</execution>
+						<execution>
+							<id>war-exploded</id>
+							<phase>package</phase>
+							<goals>
+								<goal>exploded</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin> <!-- maven-install-plugin -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+				<plugin> <!-- maven-deploy-plugin -->
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.7</version>
+					<configuration>
+						<skip>maven.deploy.plugin.skip</skip> <!-- use weblogic-maven-plugin instead -->
+					</configuration>
+				</plugin>
+				<plugin> <!-- weblogic-maven-plugin -->
+					<groupId>com.oracle.weblogic</groupId>
+					<artifactId>weblogic-maven-plugin</artifactId>
+					<version>12.1.2-0-0</version>
+					<executions>
+						<execution>
+							<id>weblogic-maven-undeploy</id>
+							<phase>deploy</phase>
+							<goals>
+								<goal>undeploy</goal>
+							</goals>
+							<configuration>
+								<adminurl>${weblogic.adminurl}</adminurl>
+								<user>${weblogic.user}</user>
+								<password>${weblogic.password}</password>
+								<targets>${weblogic.targets}</targets>
+								<action>undeploy</action>
+								<name>${project.build.finalName}</name>
+								<verbose>true</verbose>
+								<failOnError>false</failOnError>
+							</configuration>
+						</execution>
+						<execution>
+							<id>weblogic-maven-deploy</id>
+							<phase>deploy</phase>
+							<goals>
+								<goal>deploy</goal>
+							</goals>
+							<configuration>
+								<adminurl>${weblogic.adminurl}</adminurl>
+								<user>${weblogic.user}</user>
+								<password>${weblogic.password}</password>
+								<targets>${weblogic.targets}</targets>
+								<action>deploy</action>
+								<name>${project.build.finalName}</name>
+								<source>${project.basedir}/target/${project.build.finalName}</source>
+								<verbose>true</verbose>
+								<upload>false</upload>
+							</configuration>
+						</execution>
+					</executions>
+					<dependencies>
+						<dependency>
+							<groupId>org.codehaus.plexus</groupId>
+							<artifactId>plexus-utils</artifactId>
+							<version>1.5.6</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<properties>
+		<compiler-source>1.7</compiler-source>
+		<compiler-target>1.7</compiler-target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+</project>
